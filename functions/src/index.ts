@@ -1,6 +1,10 @@
 import * as functions from 'firebase-functions';
 import * as admin from 'firebase-admin';
+import * as cors from 'cors';
+import * as express from 'express';
 
+const app = express();
+app.use(cors({ origin: true }));
 const serviceAccount = require('../config/cms-demo-a72bb-firebase-adminsdk-8ngl0-d0e91c197c.json');
 
 admin.initializeApp({
@@ -8,9 +12,7 @@ admin.initializeApp({
   databaseURL: "https://cms-demo-a72bb.firebaseio.com"
 });
 
-const functionsInTokyo = functions.region('asia-northeast1');
-
-export const helloWorld = functionsInTokyo.https.onRequest( async (request, response) => {
+app.get('*', async (request, response) => {
   try {
     const querySnapshot = await admin
       .firestore()
@@ -35,4 +37,7 @@ export const helloWorld = functionsInTokyo.https.onRequest( async (request, resp
     });
   }
 });
+
+const functionsInTokyo = functions.region('asia-northeast1');
+export const helloWorld = functionsInTokyo.https.onRequest(app);
 

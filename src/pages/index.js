@@ -1,6 +1,7 @@
 import React from "react"
 import { Link } from "gatsby"
 import Header from "../components/header"
+import Blog from '../components/blog';
 
 export default () => (
   <div style={{ color: `purple` }}>
@@ -8,5 +9,6 @@ export default () => (
     <Header headerText="Hello Gatsby!" />
     <p>What a world.</p>
     <img src="https://source.unsplash.com/random/400x200" alt="" />
+    <Blog />
   </div>
 )
