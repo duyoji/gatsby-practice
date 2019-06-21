@@ -5,5 +5,11 @@
  */
 
 module.exports = {
+  siteMetadata: {
+    title: `Gatsby`,
+    siteUrl: `https://tsuyopon.xyz/`,
+    description: `Webの基本スキルと、僕が気になっている技術を動画で解説するサイト`,
+  },
   /* Your site config here */
+  plugins: [`gatsby-plugin-emotion`],
 }
